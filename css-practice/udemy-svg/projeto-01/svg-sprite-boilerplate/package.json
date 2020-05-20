@@ -1,0 +1,19 @@
+{
+  "name": "svg-sprite-boilerplate",
+  "version": "1.0.0",
+  "description": "Boilerplate em Gulp para criar sprites em SVG",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "svg",
+    "gulp"
+  ],
+  "author": "Mi",
+  "license": "MIT",
+  "devDependencies": {
+    "gulp": "^4.0.2",
+    "gulp-svg-sprite": "^1.5.0"
+  }
+}
