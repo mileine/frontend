@@ -1,1 +1,1 @@
-Exercises from this [SVG Course](https://www.udemy.com/share/101tmc/).
+Exercises from this [SVG Course](https://www.udemy.com/share/101tmc/)
