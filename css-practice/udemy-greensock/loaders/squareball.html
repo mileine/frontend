@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Square ball</title>
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+
+    .square-ball {
+      height: 80px;
+      width: 80px;
+      border: 8px solid teal;
+      background: lightsalmon;
+    }
+</style>
+<body>
+    <!-- 1 elemento
+      largura/altura
+      borda
+      background
+    -->
+
+    <!-- 
+      2 etapas:
+      - quadrado, maior
+      - durante - rotação
+      - repetindo, pausa entre as repetições
+      - bolinha, menor
+    -->
+
+    <div class="square-ball">
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.20.4/TweenMax.min.js"></script>
+    <script>
+
+        const squareBall = document.querySelectorAll('.square-ball');
+        
+        TweenMax.to(squareBall, 2, {
+          scale: .7,
+          rotation: "360deg",
+          borderRadius: "50%",
+          repeat: -1,
+          repeatDelay: .5,
+          yoyo: true
+        })  
+
+    </script>
+</body>
+</html>
