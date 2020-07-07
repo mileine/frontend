@@ -39,7 +39,7 @@ function fullScreen() {
   TweenMax.set(modal, { background: '#fff', scale: 0 });
   TweenMax.set(modalClose, { color: '#333'});
   TweenMax.set([modalHeader, modalBox], { position: 'initial'});
-  TweenMax.set(modalTitle, { color: '#333', background: '#fff' })
+  TweenMax.set(modalTitle, { color: '#333', background: '#fff' });
   TweenMax.to(modal, .2, { autoAlpha: 1, scale: 1});
 }
 
