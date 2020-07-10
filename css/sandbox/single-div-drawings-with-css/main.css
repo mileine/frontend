@@ -1,0 +1,59 @@
+#example-1,
+#example-1:before,
+#example-1:after
+ {
+  width: 100px;
+  height: 100px; 
+  color: #fff;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+#example-1 {
+  background: red; 
+}
+
+#example-1:before {
+  content: '2';
+  position: absolute;
+  left: 150px;
+  background: blue;
+}
+
+#example-1:after {
+  content: '3';
+  position: absolute;
+  left: 300px;
+  background: yellow;
+  color: darkslategray;
+}
+
+#example-2 {
+  width: 100px;
+  height: 100px;
+  background: red;
+  border-radius: 50%;
+  box-shadow: 170px 0 10px yellow,
+                330px 0 0 -20px blue,
+                330px 5px 5px -20px black;
+}
+
+#example-3 {
+  width: 100px;
+  height: 100px;
+  background-image: linear-gradient(to right, gray, white, gray, black);
+  position: relative;
+}
+
+#example-3:after{
+  width: 100px;
+  height: 100px;
+  content: '';
+  position: absolute;
+  left: 120px;
+  background-image: radial-gradient(circle, yellow 50%, transparent 50%),
+                      linear-gradient(to right, blue, red);
+}
