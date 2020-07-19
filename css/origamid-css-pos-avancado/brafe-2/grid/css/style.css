@@ -67,6 +67,13 @@ body {
 	padding: 20px;
 }
 
+
+@media (max-width: 739px) {
+	.filtro {
+		display: none;
+	}
+}
+
 .filtro h2 {
 	font-size: 1.125em;
 	padding: 10px 0
