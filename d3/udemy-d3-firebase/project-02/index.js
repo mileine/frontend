@@ -34,7 +34,7 @@ form.addEventListener('submit', e => {
     db.collection('activities').add({
       distance,
       activity,
-      data: new Date().toString()
+      date: new Date().toString()
     }).then(() => {
       error.textContent = '';
       input.value = '';
