@@ -32,7 +32,7 @@ const update = (data) => {
   y.domain([0, d3.max(data, d => d.distance)]);
 
   // create circles for objects
-  const circles = graph.selectAll('circles')
+  const circles = graph.selectAll('circle')
     .data(data)
 
   // remove unwanted points
@@ -46,10 +46,10 @@ const update = (data) => {
   // add new points
   circles.enter()
     .append('circle')
-    .attr('r', 4)
-    .attr('cx', d => x(new Date(d.date)))
-    .attr('cy', d => y(d.distance))
-    .attr('fill', '#ccc');
+      .attr('r', 4)
+      .attr('cx', d => x(new Date(d.date)))
+      .attr('cy', d => y(d.distance))
+      .attr('fill', '#ccc');
     
   // create axes
   const xAxis = d3.axisBottom(x)
@@ -89,7 +89,7 @@ db.collection('activities').orderBy('date').onSnapshot(res => {
         data[index] = doc;
         break;
       case 'removed':
-        data = data.filter(item => item.id != doc.id);
+        data = data.filter(item => item.id !== doc.id);
         break;
       default:
         break;
