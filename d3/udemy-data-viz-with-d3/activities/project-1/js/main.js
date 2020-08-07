@@ -23,35 +23,29 @@ const svg = canvas.append('svg')
 const chart = svg.append('g')
         .attr('transform', `translate(${margin.left},${margin.top})`);
 
+var x, y; 
+
+var xAxisGroup = chart.append('g')
+        .attr('class', 'x-axis')
+        .attr('transform',`translate(0, ${height})`)
+
+var yAxisGroup =  chart.append('g')
+        .attr('class','y-axis')
+
 // Load data 
 d3.json('data/revenues.json').then(function (data) {
-        
         // create x-axis
-        var x = d3.scaleBand()
+        x = d3.scaleBand()
                 .domain(data.map(d => d.month))
                 .range([0, width])
                 .paddingInner(0.3)
                 .paddingOuter(0.3);
         
         // create y-axis        
-        var y = d3.scaleLinear()
+        y = d3.scaleLinear()
                 .domain([0, d3.max(data, d => d.revenue)])
                 .range([height, 0]);
-
-        // create x-axis call
-        var xAxisCall = d3.axisBottom(x);
-        chart.append('g')
-                .attr('class', 'x-axis')
-                .attr('transform',`translate(0, ${height})`)
-                .call(xAxisCall);
-
-        // create y-axis call
-        var yAxisCall = d3.axisLeft(y)
-                .tickFormat(d => '$' + d)
-        chart.append('g')
-                .attr('class','y-axis')
-                .call(yAxisCall);
-                        
+               
         // X label
         chart.append('text')
                 .attr('class','x-axis-label')
@@ -71,10 +65,30 @@ d3.json('data/revenues.json').then(function (data) {
                 .attr('transform','rotate(-90)')
                 .text('Revenue');
 
+        d3.interval(function() {
+                update(data);
+        }, 1000)
+
+        // Run the vis for the first time
+        update(data);
+})
+
+function update(data) {
+        x.domain(data.map(d => d.month));
+        y.domain([0, d3.max(data, d => d.revenue)]);
+
+        // create x-axis call
+        var xAxisCall = d3.axisBottom(x);
+        xAxisGroup.call(xAxisCall);
+
+        // create y-axis call
+        var yAxisCall = d3.axisLeft(y)
+                .tickFormat(d => '$' + d)
+        yAxisGroup.call(yAxisCall);
 
         // draw rects
         var rects = chart.selectAll('rect')
-                .data(data);
+        .data(data);
         
         rects.enter()
                 .append('rect')
@@ -83,4 +97,5 @@ d3.json('data/revenues.json').then(function (data) {
                         .attr('width', x.bandwidth)
                         .attr('height', d => height - y(d.revenue))
                         .attr('fill','gray')
-})
+                
+}
