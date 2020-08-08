@@ -1,4 +1,4 @@
-body, p, h1, ul, li {
+body, p, h1, ul, li, blockquote {
   padding: 0px;
   margin: 0px;
 }
@@ -12,13 +12,6 @@ p {
   margin-block-end: 0;
 }
 
-blockquote {
-  margin-block-start: 0;
-  margin-block-end: 0;
-  margin-inline-start: 0;
-  margin-inline-end: 0;
-}
-
 li {
   list-style: none;
 }
@@ -29,7 +22,7 @@ a {
 
 img {
   display: block;
-  max-width: 100%;
+  width: 100%;
   border-radius: 5px;
 }
 
@@ -56,15 +49,14 @@ img {
 }
 
 @media (max-width: 760px) {
-  .estutura {
+  .estrutura {
     grid-template-columns: 100%;
     grid-template-areas: 
       "header"
       "sidenav"
       "content"
       "anuncios"
-      "footer"
-    ;
+      "footer";
   }
 }
 
@@ -106,6 +98,21 @@ img {
   margin-left: 30px;
 }
 
+@media (max-width: 760px) {
+  .header {
+    grid-template-columns: auto;
+  }
+  .logo {
+    margin-bottom: 20px;
+  }
+  .header nav a {
+    font-size: 1em;
+  }
+  .header li + li {
+    margin-left: 10px;
+  }
+}
+
 /*SIDENAV*/
 
 .sidenav {
@@ -127,6 +134,44 @@ img {
 
 .sidenav li a:hover {
   background: #b07dfb;
+}
+
+@keyframes seta {
+  from {
+    right: 30px;
+  }
+  to {
+    right: 20px;
+  }
+}
+
+@media (max-width: 760px) {
+  .sidenav {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch; 
+    -ms-overflow-style: -ms-autohiding-scrollbar;
+    position: relative;
+  }
+  .sidenav::after {
+    content: '⟶';
+    position: absolute;
+    top: 5px;
+    right: 30px;
+    color: rgba(0,0,0,.3);
+    animation: seta .5s ease-in 0s infinite alternate;
+  }
+  .sidenav ul {
+    display: flex;
+  }
+  .sidenav ul li {
+    flex: 1 0 60px;
+  }
+  .sidenav {
+    padding: 0 30px;
+  }
+  .sidenav li a {
+    margin: 30px 30px 30px 0;
+  }
 }
 
 /*CONTENT*/
@@ -152,6 +197,12 @@ img {
 
 .imagem-2 {
   align-self: 2;
+}
+
+@media (max-width: 600px) {
+  .content {
+    grid-template-columns: auto;
+  }
 }
 
 /*ESTILOS CONTENT*/
@@ -264,6 +315,7 @@ p {
   align-content: start;
   padding: 30px;
   gap: 30px;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
 }
 
 /*FOOTER*/
