@@ -10,12 +10,19 @@
 .missao_sobre p {
   @include tipo-1(18);
 	margin-bottom: 1em;
-	padding-right: 60px
+  padding-right: 60px;
+  @include d(m) {
+    @include tipo-1(14);
+    padding-right: 0px;
+  }
 }
 
 .missao_sobre ul li {
   @include tipo-2(18);
   line-height: 30px;
+  @include d(m) {
+    @include tipo-1(14);
+  }
 }
 
 .foto-equipe {

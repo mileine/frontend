@@ -1,3 +1,15 @@
+@mixin d($dispositivo) {
+  @if $dispositivo == t {
+    @media only screen and (min-width: 768px) and (max-width: 959px) {
+      @content
+    }
+  } @else if $dispositivo == m {
+    @media only screen and (max-width: 767px) {
+      @content
+    }
+  }
+}
+
 *, *:before, *:after {
   -webkit-box-sizing: border-box; 
   -moz-box-sizing: border-box; 
@@ -43,7 +55,7 @@ $colunas: 16;
 	clear: both;
 }
 
-@media only screen and (min-width: 768px) and (max-width: 959px) {
+@include d(t) {
 
   $container: 768;
   
@@ -63,7 +75,8 @@ $colunas: 16;
   }
 }
 
-@media only screen and (max-width: 767px) {
+@include d(m) {
+  
   $container: 300;
   
   %mobile {
